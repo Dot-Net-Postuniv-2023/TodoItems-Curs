@@ -24,7 +24,6 @@ namespace TodoApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
-            await Task.Delay(6000);
             return await _context.TodoItems.ToListAsync();
         }
 
@@ -78,6 +77,7 @@ namespace TodoApi.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
+            Console.WriteLine("PostTodoItem");
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
