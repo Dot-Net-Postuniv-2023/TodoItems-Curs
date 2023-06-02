@@ -64,7 +64,6 @@ namespace TodoApi.Controllers
                     Id = subItem.Id == null ? 0 : subItem.Id.Value,
                     Name = subItem.Name,
                     Description = subItem.Description,
-                    DateAdded = DateTime.Now, // !!!
                     DateCompleted = subItem.DateCompleted,
                     Priority = subItem.Priority,
                     TodoItemId = todoItemDTO.Id.Value
@@ -75,6 +74,7 @@ namespace TodoApi.Controllers
             {
                 if (todoItem.TodoSubItems[i].Id == 0)
                 {
+                    todoItem.TodoSubItems[i].DateAdded = DateTime.Now;
                     _context.TodoSubItems.Add(todoItem.TodoSubItems[i]);
                 }
                 else
